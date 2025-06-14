@@ -1,1 +1,33 @@
-# buchaphra-static123
+# Buchaphra NFT Auth Example
+
+This project demonstrates a simple authentication flow using **Next.js**, **NextAuth** and a file-based user store.
+
+This example uses the classic **pages router** for compatibility with NextAuth.
+
+## Getting Started
+
+Install dependencies and run the development server:
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000/login` to sign in. You can create a new account at `/signup`.
+Visit `http://localhost:3000/marketplace` to browse a demo NFT storefront.
+Check `http://localhost:3000/template` for a simple page template example.
+
+## Building
+
+```bash
+npm run build
+```
+
+The project is ready to deploy to Vercel.
+
+### Assets
+
+Binary image files are not included in this repository. The site uses a small
+`favicon.svg` under `app/public/`. Replace this file with your own SVG if you
+need a custom icon.
