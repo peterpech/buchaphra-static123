@@ -1,7 +1,10 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
-import { promises as fs } from "fs";
+export const authOptions: NextAuthOptions = {
+};
+
+const handler = NextAuth(authOptions);
 import path from "path";
 
 async function findUser(email: string, password: string) {
