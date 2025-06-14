@@ -17,6 +17,18 @@ Open `http://localhost:3000/login` to sign in. You can create a new account at `
 Visit `http://localhost:3000/marketplace` to browse a demo NFT storefront.
 Check `http://localhost:3000/template` for a simple page template example.
 
+## Usage
+
+The demo ships with a single preconfigured account:
+
+```
+Email: admin@example.com
+Password: 123456
+```
+
+Sign up at `/signup` to create additional accounts. All user data is saved in
+`data/users.json`.
+
 ## Building
 
 ```bash

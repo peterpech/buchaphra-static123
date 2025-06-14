@@ -49,6 +49,3 @@ export default function SignupPage() {
   );
 }
 
-export async function getServerSideProps() {
-  return { props: {} };
-}

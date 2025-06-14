@@ -36,6 +36,3 @@ export default function MarketplacePage() {
   );
 }
 
-export async function getServerSideProps() {
-  return { props: {} };
-}

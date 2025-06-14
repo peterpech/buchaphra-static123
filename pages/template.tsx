@@ -10,6 +10,3 @@ export default function TemplatePage() {
   );
 }
 
-export async function getServerSideProps() {
-  return { props: {} };
-}

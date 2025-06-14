@@ -34,6 +34,3 @@ export default function LoginPage() {
   );
 }
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
