@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import type { NextAuthOptions } from "next-auth";
 import { promises as fs } from "fs";
 import path from "path";
 
@@ -10,7 +11,7 @@ async function findUser(email: string, password: string) {
   return users.find((u: any) => u.email === email && u.password === password);
 }
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -32,5 +33,7 @@ const handler = NextAuth({
     signIn: "/login",
   },
   session: { strategy: "jwt" },
-});
+};
+
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

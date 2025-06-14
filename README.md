@@ -31,7 +31,7 @@ Password: 123456
 
 Sign up at `/signup` to create additional accounts. All user data is saved in `data/users.json`.
 
-KYC submissions are stored in `data/kyc.json` for demonstration. The mint page simply simulates a transaction and does not interact with a real blockchain.
+KYC submissions are stored in `data/kyc.json` and associated with the email of the logged‑in user. After submitting KYC data at `/kyc`, your profile page will show whether verification is complete. The mint page simply simulates a transaction and does not interact with a real blockchain.
 
 ## Building
 
