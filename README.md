@@ -3,6 +3,8 @@
 This project demonstrates a simple authentication flow using **Next.js**, **NextAuth** and a file-based user store.
 
 This example uses the classic **pages router** for compatibility with NextAuth.
+There is no `app/` directory.  All pages live under `pages/` and API routes
+under `pages/api/` so the credential provider works correctly.
 
 ## Getting Started
 
@@ -12,6 +14,9 @@ Install dependencies and run the development server:
 npm install
 npm run dev
 ```
+
+The `package.json` resides in the repository root so build tools and CI systems
+can find it easily.
 
 Open `http://localhost:3000/login` to sign in. You can create a new account at `/signup`.
 After signing in you can view your profile at `http://localhost:3000/profile`.
