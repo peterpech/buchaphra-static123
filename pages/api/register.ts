@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(400).json({ message: 'Missing fields' });
     return;
   }
-  const filePath = path.join(process.cwd(), 'app', 'data', 'users.json');
+  const filePath = path.join(process.cwd(), 'data', 'users.json');
   const jsonData = await fs.readFile(filePath, 'utf-8');
   const users = JSON.parse(jsonData);
   if (users.find((u: any) => u.email === email)) {

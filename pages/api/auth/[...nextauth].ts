@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 async function findUser(email: string, password: string) {
-  const filePath = path.join(process.cwd(), "app", "data", "users.json");
+  const filePath = path.join(process.cwd(), "data", "users.json");
   const jsonData = await fs.readFile(filePath, "utf-8");
   const users = JSON.parse(jsonData);
   return users.find((u: any) => u.email === email && u.password === password);

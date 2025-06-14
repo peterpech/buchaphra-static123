@@ -9,7 +9,6 @@ This example uses the classic **pages router** for compatibility with NextAuth.
 Install dependencies and run the development server:
 
 ```bash
-cd app
 npm install
 npm run dev
 ```
@@ -29,5 +28,5 @@ The project is ready to deploy to Vercel.
 ### Assets
 
 Binary image files are not included in this repository. The site uses a small
-`favicon.svg` under `app/public/`. Replace this file with your own SVG if you
+`favicon.svg` under `public/`. Replace this file with your own SVG if you
 need a custom icon.
