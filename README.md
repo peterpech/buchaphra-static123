@@ -2,6 +2,8 @@
 
 This project demonstrates a simple authentication flow using **Next.js**, **NextAuth** and a file-based user store.
 
+This example uses the classic **pages router** for compatibility with NextAuth.
+
 ## Getting Started
 
 Install dependencies and run the development server:
