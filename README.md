@@ -23,7 +23,9 @@ Check `http://localhost:3000/template` for a simple page template example.
 npm run build
 ```
 
-The project is ready to deploy to Vercel.
+The project is ready to deploy to Vercel.  User data is stored in a simple
+`data/users.json` file when you sign up.  This is for demonstration only and
+should be replaced with a real database in production.
 
 ### Assets
 
