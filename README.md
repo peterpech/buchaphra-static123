@@ -13,6 +13,7 @@ npm install
 npm run dev
 ```
 
+Visit `http://localhost:3000` to see the home page.
 The `package.json` resides in the repository root so build tools and CI systems can find it easily.
 
 Open `http://localhost:3000/login` to sign in. You can create a new account at `/signup`.
