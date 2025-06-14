@@ -14,8 +14,9 @@ npm run dev
 ```
 
 Open `http://localhost:3000/login` to sign in. You can create a new account at `/signup`.
-Visit `http://localhost:3000/marketplace` to browse a demo NFT storefront.
-Check `http://localhost:3000/template` for a simple page template example.
+After signing in you can view your profile at `http://localhost:3000/profile`.
+Visit `http://localhost:3000/marketplace` to browse a demo NFT storefront and
+check `http://localhost:3000/template` for a simple page template example.
 
 ## Usage
 
