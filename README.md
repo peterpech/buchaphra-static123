@@ -14,7 +14,7 @@ npm run dev
 ```
 
 Visit `http://localhost:3000` to see the home page.
-The `package.json` resides in the repository root so build tools and CI systems can find it easily.
+The `package.json` resides in the repository root so build tools and CI systems can find it easily. The home page now features an amulet themed banner and link to the marketplace.
 
 Open `http://localhost:3000/login` to sign in. You can create a new account at `/signup`.
 After signing in you can view your profile at `http://localhost:3000/profile`.
@@ -45,3 +45,4 @@ The project is ready to deploy to Vercel. User data is stored in a simple `data/
 ### Assets
 
 Binary image files are not included in this repository. The site uses a small `favicon.svg` under `public/`. Replace this file with your own SVG if you need a custom icon.
+An additional placeholder `amulet.svg` provides a simple banner image for the home page.
