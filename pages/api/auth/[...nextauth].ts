@@ -2,22 +2,16 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
 
-// NextAuth requires providers to be defined. We use a simple
-// credentials provider backed by a JSON file for this demo.
-export const authOptions: NextAuthOptions = {
-};
+// NextAuth requires providers to be defined. This demo uses a
+// credentials provider with hard-coded values for simplicity.
 
-const handler = NextAuth(authOptions);
-import path from "path";
-
-async function findUser(email: string, password: string) {
-  const filePath = path.join(process.cwd(), "data", "users.json");
-  const jsonData = await fs.readFile(filePath, "utf-8");
-  const users = JSON.parse(jsonData);
-  return users.find((u: any) => u.email === email && u.password === password);
-}
-
-export const authOptions: NextAuthOptions = {
+        username: { label: "Username", type: "text" },
+        // Simple login check. Replace with real logic for production.
+        if (
+          credentials?.username === "admin" &&
+          credentials?.password === "1234"
+        ) {
+          return { id: "1", name: "Admin", email: "admin@example.com" };
   providers: [
     CredentialsProvider({
       name: "Credentials",

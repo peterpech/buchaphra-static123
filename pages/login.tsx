@@ -2,12 +2,12 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     await signIn("credentials", {
-      email,
+      username,
       password,
       callbackUrl: "/profile",
     });
@@ -18,8 +18,8 @@ export default function LoginPage() {
       <h1 className="text-xl mb-4">Login</h1>
       <input
         className="border mb-2 w-full"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
         className="border mb-2 w-full"

@@ -1,6 +1,6 @@
 # Buchaphra NFT Auth Example
 
-This project demonstrates a simple authentication flow using **Next.js**, **NextAuth** and a file-based user store.
+This project demonstrates a simple authentication flow using **Next.js** and **NextAuth**. A credentials provider is configured with a single demo user.
 
 This example uses the classic **pages router** for compatibility with NextAuth. There is no `app/` directory. All pages live under `pages/` and API routes under `pages/api/` so the credential provider works correctly.
 
@@ -26,13 +26,13 @@ New pages include a basic KYC form at `/kyc` and a mock NFT mint page at `/mint`
 The demo ships with a single preconfigured account:
 
 ```
-Email: admin@example.com
-Password: 123456
+Username: admin
+Password: 1234
 ```
 
-Sign up at `/signup` to create additional accounts. All user data is saved in `data/users.json`.
+A sign-up page is provided at `/signup`, but the credentials provider only allows the hard-coded account. Submitted registrations are saved to `data/users.json` for reference.
 
-KYC submissions are stored in `data/kyc.json` and associated with the email of the logged‑in user. After submitting KYC data at `/kyc`, your profile page will show whether verification is complete. The mint page simply simulates a transaction and does not interact with a real blockchain.
+KYC submissions are stored in `data/kyc.json` and associated with the logged‑in user's name. After submitting KYC data at `/kyc`, your profile page will show whether verification is complete. The mint page simply simulates a transaction and does not interact with a real blockchain.
 
 ## Building
 
