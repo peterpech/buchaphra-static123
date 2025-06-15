@@ -1,6 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
+
+// NextAuth requires providers to be defined. We use a simple
+// credentials provider backed by a JSON file for this demo.
 export const authOptions: NextAuthOptions = {
 };
 
