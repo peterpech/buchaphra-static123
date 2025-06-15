@@ -1,4 +1,12 @@
 import { useState } from 'react';
+import { ethers } from 'ethers';
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../lib/contract';
+
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
 
 export default function MintPage() {
   const [name, setName] = useState('');
@@ -7,11 +15,37 @@ export default function MintPage() {
   const [status, setStatus] = useState('');
 
   const handleMint = async () => {
-    // This is a placeholder for minting with ethers.js
-    // In a real app you'd connect to MetaMask and send a transaction
-    setStatus('Minting...');
-    await new Promise((r) => setTimeout(r, 1000));
-    setStatus('Minted token with dummy tx hash');
+    if (!window.ethereum) {
+      alert('MetaMask is required');
+      return;
+    }
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    await provider.send('eth_requestAccounts', []);
+    const signer = await provider.getSigner();
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+
+    setStatus('Uploading to IPFS...');
+    const metadata = { name, description, image };
+    const res = await fetch('https://api.nft.storage/upload', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NFT_STORAGE_KEY}` || '',
+      },
+      body: new Blob([JSON.stringify(metadata)], { type: 'application/json' }),
+    });
+
+    if (!res.ok) {
+      setStatus('Failed to upload metadata');
+      return;
+    }
+    const { value } = await res.json();
+    const uri = `ipfs://${value.cid}`;
+
+    setStatus('Minting on chain...');
+    const tx = await contract.mint(await signer.getAddress(), uri);
+    await tx.wait();
+    setStatus(`Minted token. Tx: ${tx.hash}`);
   };
 
   return (

@@ -32,7 +32,18 @@ Password: 1234
 
 A sign-up page is provided at `/signup`, but the credentials provider only allows the hard-coded account. Submitted registrations are saved to `data/users.json` for reference.
 
-KYC submissions are stored in `data/kyc.json` and associated with the logged‑in user's name. After submitting KYC data at `/kyc`, your profile page will show whether verification is complete. The mint page simply simulates a transaction and does not interact with a real blockchain.
+KYC submissions are stored in `data/kyc.json` and associated with the logged‑in user's name. After submitting KYC data at `/kyc`, your profile page will show whether verification is complete. The mint page now integrates with MetaMask and uploads metadata to IPFS via `nft.storage` before calling a smart contract.
+
+### Deploying the smart contract
+
+Compile and deploy `AmuletNFT.sol` with Hardhat:
+
+```bash
+npm run compile
+npm run deploy
+```
+
+Set the `RPC_URL`, `PRIVATE_KEY`, and `NEXT_PUBLIC_CONTRACT_ADDRESS` environment variables to connect to your testnet or mainnet.
 
 ## Building
 

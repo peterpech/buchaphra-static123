@@ -1,24 +1,44 @@
+import { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../lib/contract';
+
+interface NFTItem {
+  id: number;
+  name: string;
+  image: string;
+}
+
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export default function MarketplacePage() {
-  const items = [
-    {
-      id: 1,
-      name: 'Amulet #1',
-      price: '1000 THB',
-      image: 'https://picsum.photos/seed/amulet1/200',
-    },
-    {
-      id: 2,
-      name: 'Amulet #2',
-      price: '1500 THB',
-      image: 'https://picsum.photos/seed/amulet2/200',
-    },
-    {
-      id: 3,
-      name: 'Amulet #3',
-      price: '2000 THB',
-      image: 'https://picsum.photos/seed/amulet3/200',
-    },
-  ];
+  const [items, setItems] = useState<NFTItem[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      if (!window.ethereum) return;
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+      const total = await contract.tokenIdCounter();
+      const arr: NFTItem[] = [];
+      for (let i = 1; i <= Number(total); i++) {
+        try {
+          const uri = await contract.tokenURI(i);
+          const resp = await fetch(`https://nftstorage.link/ipfs/${uri.replace('ipfs://', '')}`);
+          const meta = await resp.json();
+          arr.push({ id: i, name: meta.name, image: meta.image.replace('ipfs://', 'https://nftstorage.link/ipfs/') });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      setItems(arr);
+    };
+    load();
+  }, []);
+
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Marketplace</h1>
@@ -27,7 +47,6 @@ export default function MarketplacePage() {
           <div key={item.id} className="border p-4 text-center">
             <img src={item.image} alt={item.name} className="mx-auto mb-2" />
             <h2 className="font-semibold">{item.name}</h2>
-            <p className="text-sm mb-2">{item.price}</p>
             <button className="bg-blue-600 text-white px-3 py-1">Buy</button>
           </div>
         ))}
