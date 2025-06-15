@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function SignupPage() {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,7 +12,7 @@ export default function SignupPage() {
     const res = await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ username, email, password }),
     });
     if (res.ok) {
       router.push('/login');
@@ -27,12 +27,12 @@ export default function SignupPage() {
       <h1 className="text-xl mb-4">Sign Up</h1>
       <input
         className="border mb-2 w-full"
-        placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
         className="border mb-2 w-full"
-        placeholder="Email"
+        placeholder="Email (optional)"
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
