@@ -46,3 +46,4 @@ The project is ready to deploy to Vercel. User data is stored in a simple `data/
 
 Binary image files are not included in this repository. The site uses a small `favicon.svg` under `public/`. Replace this file with your own SVG if you need a custom icon.
 An additional placeholder `amulet.svg` provides a simple banner image for the home page.
+An additional placeholder `amulet.svg` provides a simple banner image for the home page.
